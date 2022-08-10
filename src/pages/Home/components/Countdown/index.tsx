@@ -6,7 +6,7 @@ import * as Styled from "./styles";
 export function Countdown() {
   const {
     activeCycle,
-    isActive,
+    activeCycleId,
     markCurrentCycleAsFinished,
     amountSecondsPassed,
     setSecondsPassed,
@@ -31,7 +31,7 @@ export function Countdown() {
       interval = setInterval(() => {
         const secondsDifference = differenceInSeconds(
           new Date(),
-          activeCycle.startDate
+          new Date(activeCycle.startDate)
         );
         if (secondsDifference >= totalSeconds) {
           markCurrentCycleAsFinished();
@@ -51,7 +51,7 @@ export function Countdown() {
     markCurrentCycleAsFinished,
     totalSeconds,
     setSecondsPassed,
-    isActive,
+    activeCycleId,
   ]);
   return (
     <Styled.CountdownContainer>
